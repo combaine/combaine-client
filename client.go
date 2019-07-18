@@ -10,9 +10,11 @@ import (
 )
 
 var port int
+var config string
 
 func init() {
 	flag.IntVar(&port, "port", 8080, "listen port")
+	flag.StringVar(&config, "tasks", "/etc/combaine/client-tasks.toml", "Client tasks configuration")
 }
 
 func main() {
