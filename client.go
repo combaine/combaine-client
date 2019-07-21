@@ -31,6 +31,10 @@ func main() {
 
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Logger())
+	if cl.settings.Gzip {
+		e.Logger.Info("Use gzip middleware")
+		e.Use(middleware.GzipWithConfig(middleware.GzipConfig{Level: 5}))
+	}
 
 	e.GET("/ping", func(c echo.Context) error {
 		return c.String(http.StatusOK, "/ping ok")

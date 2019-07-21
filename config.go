@@ -15,6 +15,7 @@ import (
 var defaultTimeout = time.Minute
 
 type clientSettings struct {
+	Gzip bool `yaml:",omitempty"`
 	Port int
 }
 
@@ -74,6 +75,7 @@ func (l *configLoader) load() (*clientSettings, tasksStore, error) {
 		return nil, nil, err
 	}
 	var c clientConfig
+	c.Settings.Gzip = true
 	if err := yaml.Unmarshal(bytes, &c); err != nil {
 		return nil, nil, err
 	}
