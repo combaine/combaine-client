@@ -1,11 +1,10 @@
 module github.com/combaine/combaine-client
 
-go 1.12
+go 1.16
 
 require (
-	github.com/BurntSushi/toml v0.3.1
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
-	github.com/labstack/echo v3.3.10+incompatible
-	github.com/labstack/gommon v0.2.9 // indirect
-	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4 // indirect
+	github.com/labstack/echo/v4 v4.7.2
+	github.com/labstack/gommon v0.3.1
+	github.com/pkg/errors v0.9.1
+	gopkg.in/yaml.v2 v2.4.0
 )
